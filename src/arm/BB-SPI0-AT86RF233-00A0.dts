@@ -8,7 +8,7 @@
  * Written as part of my master's thesis at PUC Chile,
  * to run the BeagleBone as an OpenThread Border Router w/o an NCP.
  *
- * http://www.sltech.cl
+ * https://www.sltech.cl
  *
  * Compiled using: make ./src/arm/BB-SPI0-AT86RF233-00A0.dtbo
  *

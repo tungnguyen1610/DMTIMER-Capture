@@ -2,7 +2,7 @@
  * This is the Device Tree overlay for the IBB Home Automation Cape
  * for BeagleBone, BeagleBone Black and Beaglebone Green.
  *
- * Copyright (c) 2015 - Ingenieurbuero Budde (http://ing-budde.de)
+ * Copyright (c) 2015 - Ingenieurbuero Budde (https://ing-budde.de)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.

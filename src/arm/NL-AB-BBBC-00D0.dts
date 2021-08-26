@@ -8,7 +8,7 @@
 * This is a device tree overlay file for Nimbelinks Skywire Beaglebone Black Cape.
 * This code initializes CAN1, UART2, UART4, and GPIOs P8.8 and P8.9 for use with the capes default operating mode.
 * This overlay file was developed from referencing the projectM device tree files (https://github.com/gntoni/projectM/tree/master/devTree)
-* and from the embedded things.com CANBUS tutorial (http://www.embedded-things.com/bbb/enable-canbus-on-the-beaglebone-black/)
+* and from the embedded things.com CANBUS tutorial (https://www.embedded-things.com/bbb/enable-canbus-on-the-beaglebone-black/)
 *
 */
 

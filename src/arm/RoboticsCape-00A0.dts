@@ -5,7 +5,7 @@
  */
 
 /*
-pinmux control byte map courtesy of http://beaglebone.cameon.net/
+pinmux control byte map courtesy of https://beaglebone.cameon.net/
 Bit 5: 1 - Input, 0 - Output
 Bit 4: 1 - Pull up, 0 - Pull down
 Bit 3: 1 - Pull disabled, 0 - Pull enabled

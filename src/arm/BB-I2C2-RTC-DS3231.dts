@@ -12,7 +12,7 @@
  * This was code was writen by Chilean Software and Hardware developer 
  * company Southern Lake Technologies for a custom-made datalogger. 
  * 
- * http://www.sltech.cl
+ * https://www.sltech.cl
  *
  * compiled using: dtc -O dtb -o BB-I2C2-RTC-DS3231.dtbo -b 0 -@ BB-I2C2-RTC-DS3231.dts
  *

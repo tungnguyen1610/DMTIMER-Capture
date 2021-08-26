@@ -1,6 +1,6 @@
 /* cape-CBB-Serial-r01.dts
  * Written by Alexander Hiam <hiamalexander@gmail.com>
- * for Logic Supply - http://logicsupply.com
+ * for Logic Supply - https://logicsupply.com
  * Jan 28, 2014
  *
  * This is the Device Tree overlay for the CBB-Serial BeagleBone and
@@ -12,7 +12,7 @@
  * is not exposed on the header), so this overlay muxes and controls
  * both pins.
  *
- * Copyright (c) 2014 - Logic Supply (http://logicsupply.com)
+ * Copyright (c) 2014 - Logic Supply (https://logicsupply.com)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
