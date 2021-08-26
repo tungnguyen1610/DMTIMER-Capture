@@ -8,22 +8,16 @@
 
 #include <dt-bindings/interrupt-controller/irq.h>
 
-/ {
-	/*
-	 * Helper to show loaded overlays under: /proc/device-tree/chosen/overlays/
-	 */
-	fragment@0 {
-		target-path="/";
-		__overlay__ {
-
-			chosen {
-				overlays {
-					BBBLUE-MPU9250-00A0 = __TIMESTAMP__;
-				};
-			};
-		};
+/*
+ * Helper to show loaded overlays under: /proc/device-tree/chosen/overlays/
+ */
+&{/chosen} {
+	overlays {
+		BBBLUE-MPU9250-00A0.bb.org-overlays = __TIMESTAMP__;
 	};
+};
 
+/ {
 	fragment@1 {
 		target = <&i2c2>;
 		__overlay__ {

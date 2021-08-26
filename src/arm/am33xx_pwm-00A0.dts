@@ -7,22 +7,16 @@
 /dts-v1/;
 /plugin/;
 
-/ {
-	/*
-	 * Helper to show loaded overlays under: /proc/device-tree/chosen/overlays/
-	 */
-	fragment@0 {
-		target-path="/";
-		__overlay__ {
-
-			chosen {
-				overlays {
-					am33xx_pwm-00A0 = __TIMESTAMP__;
-				};
-			};
-		};
+/*
+ * Helper to show loaded overlays under: /proc/device-tree/chosen/overlays/
+ */
+&{/chosen} {
+	overlays {
+		am33xx_pwm-00A0.bb.org-overlays = __TIMESTAMP__;
 	};
+};
 
+/ {
 	fragment@1 {
 		target = <&epwmss0>;
 		__overlay__ {
