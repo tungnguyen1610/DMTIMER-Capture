@@ -25,6 +25,7 @@
 	fragment@1 {
 		target = <&ocp>;
 		__overlay__ {
+			P1_33_pinmux { status = "disabled"; };
 			P1_36_pinmux { status = "disabled"; };
 		};
 	};
