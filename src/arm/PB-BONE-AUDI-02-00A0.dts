@@ -27,6 +27,7 @@
 		__overlay__ {
 			P1_33_pinmux { status = "disabled"; };
 			P1_36_pinmux { status = "disabled"; };
+			P2_30_pinmux { status = "disabled"; };
 			P2_32_pinmux { status = "disabled"; };
 		};
 	};
