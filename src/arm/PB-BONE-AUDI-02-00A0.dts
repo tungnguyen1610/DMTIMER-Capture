@@ -14,7 +14,7 @@
  */
 &{/chosen} {
 	overlays {
-		BB-BONE-AUDI-02-00A0.bb.org-overlays = __TIMESTAMP__;
+		PB-BONE-AUDI-02-00A0.bb.org-overlays = __TIMESTAMP__;
 	};
 };
 
