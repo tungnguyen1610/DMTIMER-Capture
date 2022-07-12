@@ -18,9 +18,9 @@ gpio_index="7"
 #pcbpin="P9_42" ; ball="C18" ; find_ball
 #exit 2
 
-msg="/************************/" ; echo_both
-msg="/* P8 Header */" ; echo_both
-msg="/************************/" ; echo_both
+msg="	/************************/" ; echo_both
+msg="	/* P8 Header */" ; echo_both
+msg="	/************************/" ; echo_both
 msg="" ; echo_both
 
 pcbpin="P8_01" ; label_pin="gnd" ; label_info="GND" ; echo_label
@@ -102,9 +102,9 @@ pcbpin="P8_45" ; ball="R1" ; default_mode="7" ; cp_default="hdmi" ; use_name="hd
 pcbpin="P8_46" ; ball="R2" ; default_mode="7" ; cp_default="hdmi" ; use_name="hdmi" ; default_name="hdmi" ; find_ball
 gpio_index="7"
 
-msg="/************************/" ; echo_both
-msg="/* P9 Header */" ; echo_both
-msg="/************************/" ; echo_both ; msg="" ; echo_both
+msg="	/************************/" ; echo_both
+msg="	/* P9 Header */" ; echo_both
+msg="	/************************/" ; echo_both ; msg="" ; echo_both
 
 pcbpin="P9_01" ; label_pin="gnd" ; label_info="GND" ; echo_label
 pcbpin="P9_02" ; label_pin="gnd" ; label_info="GND" ; echo_label
@@ -182,9 +182,9 @@ pcbpin="P9_44" ; label_pin="gnd" ; label_info="GND" ; echo_label
 pcbpin="P9_45" ; label_pin="gnd" ; label_info="GND" ; echo_label
 pcbpin="P9_46" ; label_pin="gnd" ; label_info="GND" ; echo_label
 
-msg="/************************/" ; echo_both
-msg="/* Special */" ; echo_both
-msg="/************************/" ; echo_both ; msg="" ; echo_both
+msg="	/************************/" ; echo_both
+msg="	/* Special */" ; echo_both
+msg="	/************************/" ; echo_both ; msg="" ; echo_both
 
 #gpio_index="6"
 #pcbpin="A15" ; ball="A15" ; default_mode="3" ; find_ball
