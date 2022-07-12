@@ -6,6 +6,7 @@ file="BeagleBone_Black"
 
 generate_timer="enable"
 generate_spi="enable"
+#generate_gpio_input="enable"
 
 echo "" > ${file}.dts
 echo "" >${file}-pinmux.dts

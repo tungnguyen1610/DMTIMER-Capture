@@ -36,12 +36,12 @@ echo_pinmux () {
 	echo "${pcbpin}_pinmux {" >> ${file}-pinmux.dts
 	echo "	compatible = \"bone-pinmux-helper\";" >> ${file}-pinmux.dts
 	echo "	status = \"okay\";" >> ${file}-pinmux.dts
-	list="\"default\", \"gpio\", \"gpio_pu\", \"gpio_pd\", \"gpio_input\""
-	cp_pinmux="default gpio gpio_pu gpio_pd gpio_input"
+	list="\"default\", \"gpio\", \"gpio_pu\", \"gpio_pd\""
+	cp_pinmux="default gpio gpio_pu gpio_pd"
 	if [ "x${cp_info_default}" = "x" ] ; then
-		cp_info="${gpio_name} default ${gpio_name} ${gpio_name} ${gpio_name} ${gpio_name}"
+		cp_info="${gpio_name} default ${gpio_name} ${gpio_name} ${gpio_name}"
 	else
-		cp_info="${cp_info_default} default ${gpio_name} ${gpio_name} ${gpio_name} ${gpio_name}"
+		cp_info="${cp_info_default} default ${gpio_name} ${gpio_name} ${gpio_name}"
 		unset cp_info_default
 	fi
 	if [ "x${got_spi_pin}" = "xenable" ] ; then
@@ -75,8 +75,8 @@ echo_pinmux () {
 		cp_info="${cp_info} ${i2c_name}"
 	fi
 	if [ "x${got_eqep_pin}" = "xenable" ] ; then
-		list="${list}, \"qep\""
-		cp_pinmux="${cp_pinmux} qep"
+		list="${list}, \"eqep\""
+		cp_pinmux="${cp_pinmux} eqep"
 		cp_info="${cp_info} ${eqep_name}"
 	fi
 	if [ "x${got_pwm_pin}" = "xenable" ] ; then
@@ -135,8 +135,7 @@ echo_pinmux () {
 	echo "	pinctrl-1 = <&${pcbpin}_gpio_pin>;" >> ${file}-pinmux.dts
 	echo "	pinctrl-2 = <&${pcbpin}_gpio_pu_pin>;" >> ${file}-pinmux.dts
 	echo "	pinctrl-3 = <&${pcbpin}_gpio_pd_pin>;" >> ${file}-pinmux.dts
-	echo "	pinctrl-4 = <&${pcbpin}_gpio_input_pin>;" >> ${file}-pinmux.dts
-	index=5
+	index=4
 	if [ "x${got_spi_pin}" = "xenable" ] ; then
 		echo "	pinctrl-${index} = <&${pcbpin}_spi_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
@@ -162,7 +161,7 @@ echo_pinmux () {
 		index=$((index + 1))
 	fi
 	if [ "x${got_eqep_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_qep_pin>;" >> ${file}-pinmux.dts
+		echo "	pinctrl-${index} = <&${pcbpin}_eqep_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pwm_pin}" = "xenable" ] ; then
@@ -400,10 +399,6 @@ find_ball () {
 	dtabs=1
 	echo cp_default=${cp_default}
 	case "${cp_default}" in
-	gpio_input)
-		dtabs=3
-		pinsetting="PIN_INPUT"
-		;;
 	pruin)
 		dtabs=4
 		pinsetting="PIN_INPUT"
@@ -414,7 +409,7 @@ find_ball () {
 	uart|i2c|spi|spi_cs|spi_sclk)
 		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
-	emmc|hdmi|audio|qep)
+	emmc|hdmi|audio|eqep)
 		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 		;;
 	*)
@@ -461,8 +456,6 @@ find_ball () {
 	echo "		${pcbpin}( PIN_OUTPUT_PULLUP | INPUT_EN | MUX_MODE${mode}) >; };		/* ${PinID}.${name} */" >> ${file}.dts
 	echo "	${pcbpin}_gpio_pd_pin: pinmux_${pcbpin}_gpio_pd_pin { pinctrl-single,pins = <" >> ${file}.dts
 	echo "		${pcbpin}( PIN_OUTPUT_PULLDOWN | INPUT_EN | MUX_MODE${mode}) >; };	/* ${PinID}.${name} */" >> ${file}.dts
-	echo "	${pcbpin}_gpio_input_pin: pinmux_${pcbpin}_gpio_input_pin { pinctrl-single,pins = <" >> ${file}.dts
-	echo "		${pcbpin}( PIN_INPUT | MUX_MODE${mode}) >; };				/* ${PinID}.${name} */" >> ${file}.dts
 
 	gpio_mul=$(echo ${name} | awk -F'_' '{print $1}' | awk -F'gpio' '{print $2}' || true)
 	gpio_add=$(echo ${name} | awk -F'_' '{print $2}' || true)
@@ -505,7 +498,7 @@ find_ball () {
 				valid_pin_mode="can"
 				pinsetting="PIN_INPUT_PULLUP"
 				got_can_pin="enable"
-				tabs=2
+				tabs=3
 				;;
 			dcan*_tx)
 				can_name=${name}
@@ -515,7 +508,7 @@ find_ball () {
 				tabs=2
 				;;
 			eqep*)
-				valid_pin_mode="qep"
+				valid_pin_mode="eqep"
 				eqep_name=${name}
 				pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 				got_eqep_pin="enable"
@@ -543,6 +536,7 @@ find_ball () {
 				i2c_name=${name}
 				pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 				got_i2c_pin="enable"
+				tabs=2
 				;;
 			pr1_ecap0*)
 				valid_pin_mode="pru_ecap"
@@ -553,6 +547,7 @@ find_ball () {
 				valid_pin_mode="pru_uart"
 				pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 				got_pru_uart_pin="enable"
+				tabs=2
 				;;
 			pr1_pru*_pru_r30*)
 				valid_pin_mode="pruout"
@@ -567,7 +562,7 @@ find_ball () {
 				name=${pruin_name}
 				pinsetting="PIN_INPUT"
 				got_pruin_pin="enable"
-				tabs=3
+				tabs=4
 				;;
 			spi0_d0|spi1_d0)
 				valid_pin_mode="spi"
