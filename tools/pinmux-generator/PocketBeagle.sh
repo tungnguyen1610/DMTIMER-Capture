@@ -8,6 +8,9 @@ echo "" > ${file}.dts
 echo "" >${file}-pinmux.dts
 echo "" >${file}-gpio.dts
 echo "" >${file}_config-pin.txt
+echo "" >${file}-a-bone-pins.h
+echo "" >${file}-b-bone-pins.h
+echo "" >${file}-bone-pins.h
 
 disable_timer="enable"
 
@@ -208,3 +211,9 @@ echo "};" >> ${file}.dts
 
 rm -rf ${file}-pinmux.dts || true
 rm -rf ${file}-gpio.dts || true
+
+cat ${file}-a-bone-pins.h >> ${file}-bone-pins.h
+cat ${file}-b-bone-pins.h >> ${file}-bone-pins.h
+
+rm -rf ${file}-a-bone-pins.h || true
+rm -rf ${file}-b-bone-pins.h || true

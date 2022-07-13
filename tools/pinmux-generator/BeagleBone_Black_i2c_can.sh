@@ -8,6 +8,9 @@ echo "" > ${file}.dts
 echo "" >${file}-pinmux.dts
 echo "" >${file}-gpio.dts
 echo "" >${file}_config-pin.txt
+echo "" >${file}-a-bone-pins.h
+echo "" >${file}-b-bone-pins.h
+echo "" >${file}-bone-pins.h
 
 #BeagleBone Black
 
@@ -21,15 +24,22 @@ msg="" ; echo_both
 
 cat ${file}-pinmux.dts >> ${file}.dts
 
-echo "cape-universal {" >> ${file}.dts
-echo "	compatible = \"gpio-of-helper\";" >> ${file}.dts
-echo "	status = \"okay\";" >> ${file}.dts
-echo "	pinctrl-names = \"default\";" >> ${file}.dts
-echo "	pinctrl-0 = <>;" >> ${file}.dts
+echo "	cape-universal {" >> ${file}.dts
+echo "		compatible = \"gpio-of-helper\";" >> ${file}.dts
+echo "		status = \"okay\";" >> ${file}.dts
+echo "		pinctrl-names = \"default\";" >> ${file}.dts
+echo "		pinctrl-0 = <>;" >> ${file}.dts
 
 cat ${file}-gpio.dts >> ${file}.dts
 
+echo "	};" >> ${file}.dts
 echo "};" >> ${file}.dts
 
 rm -rf ${file}-pinmux.dts || true
 rm -rf ${file}-gpio.dts || true
+
+cat ${file}-a-bone-pins.h >> ${file}-bone-pins.h
+cat ${file}-b-bone-pins.h >> ${file}-bone-pins.h
+
+rm -rf ${file}-a-bone-pins.h || true
+rm -rf ${file}-b-bone-pins.h || true

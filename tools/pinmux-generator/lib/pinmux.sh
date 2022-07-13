@@ -205,6 +205,9 @@ echo_gpio () {
 	echo "			dir-changeable;" >> ${file}-gpio.dts
 	echo "		};" >> ${file}-gpio.dts
 	echo "">> ${file}-gpio.dts
+
+	echo "#define gpio_${pcbpin} &${gpio_pinmux}" >> ${file}-a-bone-pins.h
+	echo "#define ${pcbpin}(mode) AM33XX_IOPAD(${cro}, mode)  /* ${found_ball}: ${PinID} */" >> ${file}-b-bone-pins.h
 }
 
 get_json_pkg () {
