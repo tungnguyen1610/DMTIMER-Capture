@@ -570,13 +570,13 @@
 	E4_4_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "eqep", "pru_ecap", "pruin";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "eqep", "pru_ecap_pwm", "pruin";
 		pinctrl-0 = <&E4_4_default_pin>;
 		pinctrl-1 = <&E4_4_gpio_pin>;
 		pinctrl-2 = <&E4_4_gpio_pu_pin>;
 		pinctrl-3 = <&E4_4_gpio_pd_pin>;
 		pinctrl-4 = <&E4_4_eqep_pin>;
-		pinctrl-5 = <&E4_4_pru_ecap_pin>;
+		pinctrl-5 = <&E4_4_pru_ecap_pwm_pin>;
 		pinctrl-6 = <&E4_4_pruin_pin>;
 	};
 
@@ -880,7 +880,7 @@
 	S1.2_6_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "spi_cs", "spi_sclk", "uart", "pwm", "pru_ecap";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "spi_cs", "spi_sclk", "uart", "pwm", "pru_ecap_pwm";
 		pinctrl-0 = <&S1.2_6_default_pin>;
 		pinctrl-1 = <&S1.2_6_gpio_pin>;
 		pinctrl-2 = <&S1.2_6_gpio_pu_pin>;
@@ -889,7 +889,7 @@
 		pinctrl-5 = <&S1.2_6_spi_sclk_pin>;
 		pinctrl-6 = <&S1.2_6_uart_pin>;
 		pinctrl-7 = <&S1.2_6_pwm_pin>;
-		pinctrl-8 = <&S1.2_6_pru_ecap_pin>;
+		pinctrl-8 = <&S1.2_6_pru_ecap_pwm_pin>;
 	};
 
 
