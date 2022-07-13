@@ -28,14 +28,14 @@ echo_label_analog () {
 
 echo_pinmux () {
 	if [ "x${cp_default}" = "x" ] ; then
-		echo "/* ${pcbpin} (ZCZ ball ${found_ball}) */" >> ${file}-pinmux.dts
+		echo "	/* ${pcbpin} (ZCZ ball ${found_ball}) */" >> ${file}-pinmux.dts
 	else
-		echo "/* ${pcbpin} (ZCZ ball ${found_ball}) ${cp_default} */" >> ${file}-pinmux.dts
+		echo "	/* ${pcbpin} (ZCZ ball ${found_ball}) ${cp_default} */" >> ${file}-pinmux.dts
 		unset default_name
 	fi
-	echo "${pcbpin}_pinmux {" >> ${file}-pinmux.dts
-	echo "	compatible = \"bone-pinmux-helper\";" >> ${file}-pinmux.dts
-	echo "	status = \"okay\";" >> ${file}-pinmux.dts
+	echo "	${pcbpin}_pinmux {" >> ${file}-pinmux.dts
+	echo "		compatible = \"bone-pinmux-helper\";" >> ${file}-pinmux.dts
+	echo "		status = \"okay\";" >> ${file}-pinmux.dts
 	list="\"default\", \"gpio\", \"gpio_pu\", \"gpio_pd\""
 	cp_pinmux="default gpio gpio_pu gpio_pd"
 	if [ "x${cp_info_default}" = "x" ] ; then
@@ -130,80 +130,80 @@ echo_pinmux () {
 	echo "${pcbpin}_CAPE=\"\"" >> ${file}_config-pin.txt
 	echo "" >> ${file}_config-pin.txt
 
-	echo "	pinctrl-names = ${list};" >> ${file}-pinmux.dts
-	echo "	pinctrl-0 = <&${pcbpin}_default_pin>;" >> ${file}-pinmux.dts
-	echo "	pinctrl-1 = <&${pcbpin}_gpio_pin>;" >> ${file}-pinmux.dts
-	echo "	pinctrl-2 = <&${pcbpin}_gpio_pu_pin>;" >> ${file}-pinmux.dts
-	echo "	pinctrl-3 = <&${pcbpin}_gpio_pd_pin>;" >> ${file}-pinmux.dts
+	echo "		pinctrl-names = ${list};" >> ${file}-pinmux.dts
+	echo "		pinctrl-0 = <&${pcbpin}_default_pin>;" >> ${file}-pinmux.dts
+	echo "		pinctrl-1 = <&${pcbpin}_gpio_pin>;" >> ${file}-pinmux.dts
+	echo "		pinctrl-2 = <&${pcbpin}_gpio_pu_pin>;" >> ${file}-pinmux.dts
+	echo "		pinctrl-3 = <&${pcbpin}_gpio_pd_pin>;" >> ${file}-pinmux.dts
 	index=4
 	if [ "x${got_spi_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_spi_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_spi_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_spi_cs_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_spi_cs_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_spi_cs_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_spi_sclk_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_spi_sclk_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_spi_sclk_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_uart_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_uart_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_uart_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_can_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_can_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_can_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_i2c_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_i2c_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_i2c_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_eqep_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_eqep_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_eqep_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pwm_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pwm_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pwm_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pwm2_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pwm2_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pwm2_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pru_uart_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pru_uart_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pru_uart_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pru_ecap_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pru_ecap_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pru_ecap_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_timer_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_timer_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_timer_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pruout_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pruout_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pruout_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_pruin_pin}" = "xenable" ] ; then
-		echo "	pinctrl-${index} = <&${pcbpin}_pruin_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pruin_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 
-	echo "};" >> ${file}-pinmux.dts
+	echo "	};" >> ${file}-pinmux.dts
 	echo "" >> ${file}-pinmux.dts
 }
 
 echo_gpio () {
-	echo "	${pcbpin} {" >> ${file}-gpio.dts
-	echo "		gpio-name = \"${pcbpin}\";" >> ${file}-gpio.dts
-	echo "		gpio = <&${gpio_pinmux} 0>;" >> ${file}-gpio.dts
-	echo "		input;" >> ${file}-gpio.dts
-	echo "		dir-changeable;" >> ${file}-gpio.dts
-	echo "	};" >> ${file}-gpio.dts
+	echo "		${pcbpin} {" >> ${file}-gpio.dts
+	echo "			gpio-name = \"${pcbpin}\";" >> ${file}-gpio.dts
+	echo "			gpio = <&${gpio_pinmux} 0>;" >> ${file}-gpio.dts
+	echo "			input;" >> ${file}-gpio.dts
+	echo "			dir-changeable;" >> ${file}-gpio.dts
+	echo "		};" >> ${file}-gpio.dts
 	echo "">> ${file}-gpio.dts
 }
 

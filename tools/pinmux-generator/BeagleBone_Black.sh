@@ -195,14 +195,15 @@ msg="" ; echo_both
 
 cat ${file}-pinmux.dts >> ${file}.dts
 
-echo "cape-universal {" >> ${file}.dts
-echo "	compatible = \"gpio-of-helper\";" >> ${file}.dts
-echo "	status = \"okay\";" >> ${file}.dts
-echo "	pinctrl-names = \"default\";" >> ${file}.dts
-echo "	pinctrl-0 = <>;" >> ${file}.dts
+echo "	cape-universal {" >> ${file}.dts
+echo "		compatible = \"gpio-of-helper\";" >> ${file}.dts
+echo "		status = \"okay\";" >> ${file}.dts
+echo "		pinctrl-names = \"default\";" >> ${file}.dts
+echo "		pinctrl-0 = <>;" >> ${file}.dts
 
 cat ${file}-gpio.dts >> ${file}.dts
 
+echo "	};" >> ${file}.dts
 echo "};" >> ${file}.dts
 
 rm -rf ${file}-pinmux.dts || true
