@@ -413,7 +413,11 @@ find_ball () {
 	uart|i2c|spi|spi_cs|spi_sclk)
 		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
-	emmc|hdmi|audio|eqep)
+	eqep)
+		dtabs=2
+		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
+		;;
+	emmc|hdmi|audio)
 		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 		;;
 	*)

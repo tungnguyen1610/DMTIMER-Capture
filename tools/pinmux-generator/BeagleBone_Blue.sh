@@ -18,26 +18,26 @@ gpio_index="7"
 
 #E1
 #EQEP_0A
-pcbpin="E1_3" ; ball="B12" ; default_mode="1" ; cp_default="qep" ; find_ball
+pcbpin="E1_3" ; ball="B12" ; default_mode="1" ; cp_default="eqep" ; find_ball
 #EQEP_0B
-pcbpin="E1_4" ; ball="C13" ; default_mode="1" ; cp_default="qep" ; find_ball
+pcbpin="E1_4" ; ball="C13" ; default_mode="1" ; cp_default="eqep" ; find_ball
 
 #E2
 #EQEP_1A V2
 gpio_index="6"
-pcbpin="E2_3" ; ball="V2" ; default_mode="2" ; cp_default="qep" ; find_ball
+pcbpin="E2_3" ; ball="V2" ; default_mode="2" ; cp_default="eqep" ; find_ball
 gpio_index="7"
 
 #EQEP_1B V3
 gpio_index="6"
-pcbpin="E2_4" ; ball="V3" ; default_mode="2" ; cp_default="qep" ; find_ball
+pcbpin="E2_4" ; ball="V3" ; default_mode="2" ; cp_default="eqep" ; find_ball
 gpio_index="7"
 
 #E3
 #EQEP_1A T12
-pcbpin="E3_3" ; ball="T12" ; default_mode="4" ; cp_default="qep" ; find_ball
+pcbpin="E3_3" ; ball="T12" ; default_mode="4" ; cp_default="eqep" ; find_ball
 #EQEP_1B R12
-pcbpin="E3_4" ; ball="R12" ; default_mode="4" ; cp_default="qep" ; find_ball
+pcbpin="E3_4" ; ball="R12" ; default_mode="4" ; cp_default="eqep" ; find_ball
 
 #E4
 #pruin V13
@@ -133,14 +133,15 @@ msg="" ; echo_both
 
 cat ${file}-pinmux.dts >> ${file}.dts
 
-echo "cape-universal {" >> ${file}.dts
-echo "	compatible = \"gpio-of-helper\";" >> ${file}.dts
-echo "	status = \"okay\";" >> ${file}.dts
-echo "	pinctrl-names = \"default\";" >> ${file}.dts
-echo "	pinctrl-0 = <>;" >> ${file}.dts
+echo "	cape-universal {" >> ${file}.dts
+echo "		compatible = \"gpio-of-helper\";" >> ${file}.dts
+echo "		status = \"okay\";" >> ${file}.dts
+echo "		pinctrl-names = \"default\";" >> ${file}.dts
+echo "		pinctrl-0 = <>;" >> ${file}.dts
 
 cat ${file}-gpio.dts >> ${file}.dts
 
+echo "	};" >> ${file}.dts
 echo "};" >> ${file}.dts
 
 rm -rf ${file}-pinmux.dts || true
