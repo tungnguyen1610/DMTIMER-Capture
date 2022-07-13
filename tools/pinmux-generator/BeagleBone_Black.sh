@@ -169,13 +169,13 @@ pcbpin="P9_40" ; ball="C7" label_pin="adc" ; label_info="AIN1" ; echo_label_anal
 
 gpio_index="6"
 pcbpin="P9_41" ; ball="D14" ; default_mode="7" ; find_ball
-msg="/* P9_41.1 */" ; echo_both
+msg="	/* P9_41.1 */" ; echo_both
 
 pcbpin="P9_91" ; ball="D13" ; default_mode="7" ; find_ball
 gpio_index="7"
 
 pcbpin="P9_42" ; ball="C18" ; default_mode="7" ; find_ball
-msg="/* P9_42.1 */" ; echo_both
+msg="	/* P9_42.1 */" ; echo_both
 pcbpin="P9_92" ; ball="B12" ; default_mode="7" ; find_ball
 
 pcbpin="P9_43" ; label_pin="gnd" ; label_info="GND" ; echo_label

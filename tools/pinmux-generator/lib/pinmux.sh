@@ -406,6 +406,10 @@ find_ball () {
 	pwm|pwm2)
 		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 		;;
+	i2c)
+		dtabs=2
+		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
+		;;
 	uart|i2c|spi|spi_cs|spi_sclk)
 		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
@@ -505,7 +509,7 @@ find_ball () {
 				valid_pin_mode="can"
 				pinsetting="PIN_OUTPUT_PULLUP"
 				got_can_pin="enable"
-				tabs=2
+				tabs=3
 				;;
 			eqep*)
 				valid_pin_mode="eqep"
@@ -539,7 +543,7 @@ find_ball () {
 				tabs=2
 				;;
 			pr1_ecap0*)
-				valid_pin_mode="pru_ecap"
+				valid_pin_mode="pru_ecap_pwm"
 				pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 				got_pru_ecap_pin="enable"
 				;;
@@ -569,7 +573,7 @@ find_ball () {
 				spi_name=${name}
 				pinsetting="PIN_INPUT_PULLUP"
 				got_spi_pin="enable"
-				tabs=2
+				tabs=3
 				;;
 			spi0_d1|spi1_d1)
 				valid_pin_mode="spi"
@@ -593,7 +597,7 @@ find_ball () {
 				spi_sclk_name=${name}
 				pinsetting="PIN_INPUT_PULLUP"
 				got_spi_sclk_pin="enable"
-				tabs=2
+				tabs=3
 				;;
 			timer*)
 				if [ "x${disable_timer}" = "x" ] ; then
@@ -609,6 +613,7 @@ find_ball () {
 				uart_name=${name}
 				pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 				got_uart_pin="enable"
+				tabs=2
 				;;
 			esac
 
@@ -622,6 +627,9 @@ find_ball () {
 				fi
 				if [ "x${tabs}" = "x3" ] ; then
 					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };			/* ${PinID}.${name} */" >> ${file}.dts
+				fi
+				if [ "x${tabs}" = "x4" ] ; then
+					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };				/* ${PinID}.${name} */" >> ${file}.dts
 				fi
 			fi
 		fi
