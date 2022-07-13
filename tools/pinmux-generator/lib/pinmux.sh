@@ -399,7 +399,7 @@ find_ball () {
 	dtabs=1
 	echo cp_default=${cp_default}
 	case "${cp_default}" in
-	pruin)
+	gpio|pruin)
 		dtabs=4
 		pinsetting="PIN_INPUT"
 		;;
