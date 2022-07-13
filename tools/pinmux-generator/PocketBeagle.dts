@@ -1194,13 +1194,13 @@
 	P2_18_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "eqep", "pru_ecap", "pruin";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "eqep", "pru_ecap_pwm", "pruin";
 		pinctrl-0 = <&P2_18_default_pin>;
 		pinctrl-1 = <&P2_18_gpio_pin>;
 		pinctrl-2 = <&P2_18_gpio_pu_pin>;
 		pinctrl-3 = <&P2_18_gpio_pd_pin>;
 		pinctrl-4 = <&P2_18_eqep_pin>;
-		pinctrl-5 = <&P2_18_pru_ecap_pin>;
+		pinctrl-5 = <&P2_18_pru_ecap_pwm_pin>;
 		pinctrl-6 = <&P2_18_pruin_pin>;
 	};
 
@@ -1308,7 +1308,7 @@
 	P2_29_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "spi_cs", "spi_sclk", "uart", "pwm", "pru_ecap";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "spi_cs", "spi_sclk", "uart", "pwm", "pru_ecap_pwm";
 		pinctrl-0 = <&P2_29_default_pin>;
 		pinctrl-1 = <&P2_29_gpio_pin>;
 		pinctrl-2 = <&P2_29_gpio_pu_pin>;
@@ -1317,7 +1317,7 @@
 		pinctrl-5 = <&P2_29_spi_sclk_pin>;
 		pinctrl-6 = <&P2_29_uart_pin>;
 		pinctrl-7 = <&P2_29_pwm_pin>;
-		pinctrl-8 = <&P2_29_pru_ecap_pin>;
+		pinctrl-8 = <&P2_29_pru_ecap_pwm_pin>;
 	};
 
 	/* P2_30 (ZCZ ball C12) pruin */

@@ -100,9 +100,9 @@ echo_pinmux () {
 		cp_info="${cp_info} ${timer_name}"
 	fi
 	if [ "x${got_pru_ecap_pin}" = "xenable" ] ; then
-		list="${list}, \"pru_ecap\""
-		cp_pinmux="${cp_pinmux} pru_ecap"
-		cp_info="${cp_info} pru_ecap"
+		list="${list}, \"pru_ecap_pwm\""
+		cp_pinmux="${cp_pinmux} pru_ecap_pwm"
+		cp_info="${cp_info} pru_ecap_pwm"
 	fi
 	if [ "x${got_pruout_pin}" = "xenable" ] ; then
 		list="${list}, \"pruout\""
@@ -177,7 +177,7 @@ echo_pinmux () {
 		index=$((index + 1))
 	fi
 	if [ "x${got_pru_ecap_pin}" = "xenable" ] ; then
-		echo "		pinctrl-${index} = <&${pcbpin}_pru_ecap_pin>;" >> ${file}-pinmux.dts
+		echo "		pinctrl-${index} = <&${pcbpin}_pru_ecap_pwm_pin>;" >> ${file}-pinmux.dts
 		index=$((index + 1))
 	fi
 	if [ "x${got_timer_pin}" = "xenable" ] ; then
