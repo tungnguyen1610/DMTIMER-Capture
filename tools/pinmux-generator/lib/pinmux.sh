@@ -212,11 +212,12 @@ echo_gpio () {
 
 get_json_pkg () {
 	###Offline: https://software-dl.ti.com/ccs/esd/pinmux/pinmux_release_archive.html
-	pinmux_version="4.0.1526"
+	#pinmux_version="4.0.1526"
+	pinmux_version="4.0.1543"
 	if [ -d ./tmp/ ] ; then
 		rm -rf ./tmp/ || true
 	fi
-	wget -c http://software-dl.ti.com/ccs/esd/pinmux/pinmux-${pinmux_version}-setup.run
+	wget -c https://downloads.ti.com/ccs/esd/pinmux/pinmux-${pinmux_version}-setup.run
 	chmod +x pinmux-${pinmux_version}-setup.run
 	mkdir tmp
 	./pinmux-${pinmux_version}-setup.run --unattendedmodeui none --mode unattended --prefix ./tmp
