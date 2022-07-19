@@ -393,32 +393,28 @@ find_ball () {
 	esac
 
 	if [ ! "x${use_name}" = "x" ] ; then
-		echo "	/* ${pcbpin} (ZCZ ball ${found_ball}) ${use_name} */" >> ${file}.dts
+		echo "	/* ${pcbpin} (ZCZ ball ${found_ball}) ${name} (${use_name}) */" >> ${file}.dts
 		unset use_name
 	else
 		echo "	/* ${pcbpin} (ZCZ ball ${found_ball}) ${name} */" >> ${file}.dts
 	fi
 	cp_info_default=${name}
 
-	dtabs=1
 	echo cp_default=${cp_default}
 	case "${cp_default}" in
 	gpio|pruin)
-		dtabs=4
 		pinsetting="PIN_INPUT"
 		;;
 	pwm|pwm2)
 		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 		;;
 	i2c)
-		dtabs=2
 		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
 	uart|i2c|spi|spi_cs|spi_sclk)
 		pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
 	eqep)
-		dtabs=2
 		pinsetting="PIN_OUTPUT_PULLDOWN | INPUT_EN"
 		;;
 	emmc|hdmi|audio)
@@ -430,7 +426,6 @@ find_ball () {
 		fi
 		case "${pupdStateAfterHHV}" in
 		PU)
-			dtabs=2
 			pinsetting="PIN_OUTPUT_PULLUP | INPUT_EN"
 		;;
 		PD)
@@ -446,18 +441,7 @@ find_ball () {
 	esac
 
 	echo "	${pcbpin}_default_pin: pinmux_${pcbpin}_default_pin { pinctrl-single,pins = <" >> ${file}.dts
-	if [ "x${dtabs}" = "x1" ] ; then
-		echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };	/* ${PinID}.${name} */" >> ${file}.dts
-	fi
-	if [ "x${dtabs}" = "x2" ] ; then
-		echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };		/* ${PinID}.${name} */" >> ${file}.dts
-	fi
-	if [ "x${dtabs}" = "x3" ] ; then
-		echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };			/* ${PinID}.${name} */" >> ${file}.dts
-	fi
-	if [ "x${dtabs}" = "x4" ] ; then
-		echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };				/* ${PinID}.${name} */" >> ${file}.dts
-	fi
+	echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };	/* ${PinID}.${name} */" >> ${file}.dts
 
 	number=${gpio_index}
 	get_name_mode
@@ -627,18 +611,7 @@ find_ball () {
 
 			if [ ! "x${valid_pin_mode}" = "x" ] ; then
 				echo "	${pcbpin}_${valid_pin_mode}_pin: pinmux_${pcbpin}_${valid_pin_mode}_pin { pinctrl-single,pins = <" >> ${file}.dts
-				if [ "x${tabs}" = "x1" ] ; then
-					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };	/* ${PinID}.${name} */" >> ${file}.dts
-				fi
-				if [ "x${tabs}" = "x2" ] ; then
-					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };		/* ${PinID}.${name} */" >> ${file}.dts
-				fi
-				if [ "x${tabs}" = "x3" ] ; then
-					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };			/* ${PinID}.${name} */" >> ${file}.dts
-				fi
-				if [ "x${tabs}" = "x4" ] ; then
-					echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };				/* ${PinID}.${name} */" >> ${file}.dts
-				fi
+				echo "		${pcbpin}( ${pinsetting} | MUX_MODE${mode}) >; };	/* ${PinID}.${name} */" >> ${file}.dts
 			fi
 		fi
 	done
