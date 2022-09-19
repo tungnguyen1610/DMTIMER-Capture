@@ -63,24 +63,19 @@
 	};
 };
 
-/ {
-	fragment@5 {
-		target = <&i2c1>;
-		__overlay__ {
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&bb_i2c1_pins>;
+&i2c1 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&bb_i2c1_pins>;
 
-			/* this is the configuration part */
-			clock-frequency = <100000>;
+	clock-frequency = <100000>;
 
-			#address-cells = <1>;
-			#size-cells = <0>;
+	#address-cells = <1>;
+	#size-cells = <0>;
 
-			extrtc: mcp7940x@68 {
-				compatible = "microchip,mcp7940x";
-				reg = <0x68>;
-			};
-		};
+	extrtc: mcp7940x@68 {
+		status = "okay";
+		compatible = "microchip,mcp7940x";
+		reg = <0x68>;
 	};
 };

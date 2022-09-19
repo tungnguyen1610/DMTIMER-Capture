@@ -43,24 +43,19 @@
 	};
 };
 
-/ {
-	fragment@4 {
-		target = <&i2c1>;
-		__overlay__ {
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&bb_i2c1_pins>;
+&i2c1 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&bb_i2c1_pins>;
 
-			/* this is the configuration part */
-			clock-frequency = <100000>;
+	clock-frequency = <100000>;
 
-			#address-cells = <1>;
-			#size-cells = <0>;
+	#address-cells = <1>;
+	#size-cells = <0>;
 
-			extrtc: pcf8563@51 {
-				compatible = "nxp,pcf8563";
-				reg = <0x51>;
-			};
-		};
+	extrtc: pcf8563@51 {
+		status = "okay";
+		compatible = "nxp,pcf8563";
+		reg = <0x51>;
 	};
 };
