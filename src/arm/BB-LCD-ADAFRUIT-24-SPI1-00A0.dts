@@ -75,32 +75,29 @@
 	P9_31_pinmux { status = "disabled"; };	/* spi1_sclk */
 };
 
-/ {
-	fragment@2 {
-		target = <&am33xx_pinmux>;
-		__overlay__ {
-			/* default state has all gpios released and mode set to uart1 */
-			/* See page 1446 of am35xx TRM */
-			bb_spi1_pins: pinmux_bb_spi1_pins {
-				pinctrl-single,pins = <
-					BONE_P9_31 0x33	/* mcasp0_aclkx.spi1_sclk,  INPUT_PULLUP | MODE3 */
-					BONE_P9_29 0x33	/* mcasp0_fsx.spi1_d0,      INPUT_PULLUP | MODE3 */
-					BONE_P9_30 0x13	/* mcasp0_axr0.spi1_d1,    OUTPUT_PULLUP | MODE3 */
-					BONE_P9_28 0x13	/* mcasp0_ahclkr.spi1_cs0, OUTPUT_PULLUP | MODE3 */
-					BONE_P9_27 0x17	/* gpio, dc,    		   OUTPUT_PULLUP | MODE07*/
-					BONE_P9_25 0x17	/* gpio, reset, 		   OUTPUT_PULLUP | MODE07*/
-					// BONE_P9_42A 0x12	/* eCAP0_in_PWM0_out.spi1_cs1 OUTPUT_PULLUP | MODE2 */
-				>;
-			};
-
-			backlight_pwm_pins: pinmux_backlight_pwm_pins {
-				pinctrl-single,pins = <
-					BONE_P9_16 0x06 /* gpmc_a2.ehrpwm1b, OMAP_MUX_MODE6 | AM33XX_PIN_OUTPUT */
-				>;
-			};  /* gpmc_a2.ehrpwm1b */
-		};
+&am33xx_pinmux {
+	/* default state has all gpios released and mode set to uart1 */
+	/* See page 1446 of am35xx TRM */
+	bb_spi1_pins: pinmux_bb_spi1_pins {
+		pinctrl-single,pins = <
+			BONE_P9_31 0x33	/* mcasp0_aclkx.spi1_sclk,  INPUT_PULLUP | MODE3 */
+			BONE_P9_29 0x33	/* mcasp0_fsx.spi1_d0,      INPUT_PULLUP | MODE3 */
+			BONE_P9_30 0x13	/* mcasp0_axr0.spi1_d1,    OUTPUT_PULLUP | MODE3 */
+			BONE_P9_28 0x13	/* mcasp0_ahclkr.spi1_cs0, OUTPUT_PULLUP | MODE3 */
+			BONE_P9_27 0x17	/* gpio, dc,    		   OUTPUT_PULLUP | MODE07*/
+			BONE_P9_25 0x17	/* gpio, reset, 		   OUTPUT_PULLUP | MODE07*/
+			// BONE_P9_42A 0x12	/* eCAP0_in_PWM0_out.spi1_cs1 OUTPUT_PULLUP | MODE2 */
+		>;
 	};
 
+	backlight_pwm_pins: pinmux_backlight_pwm_pins {
+		pinctrl-single,pins = <
+			BONE_P9_16 0x06 /* gpmc_a2.ehrpwm1b, OMAP_MUX_MODE6 | AM33XX_PIN_OUTPUT */
+		>;
+	};  /* gpmc_a2.ehrpwm1b */
+};
+
+/ {
 	fragment@3 {
 		target = <&epwmss1>;
 		__overlay__ {
