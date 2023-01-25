@@ -61,25 +61,21 @@
 	};
 };
 
+/*
+ * Free up the pins used by the cape from the pinmux helpers.
+ */
+&ocp {
+	P9_16_pinmux { status = "disabled"; };  /* lcd pwm backlight (OPTIONAL) */
+	P9_19_pinmux { status = "disabled"; };	/* lcd dc */
+	P9_20_pinmux { status = "disabled"; };	/* lcd reset */
+//	P9_23_pinmux { status = "disabled"; };	/* lcd gpio backlight (OPTIONAL) */
+	P9_17_pinmux { status = "disabled"; };	/* spi0_cs0 */
+	P9_21_pinmux { status = "disabled"; };	/* spi0_d0 */
+	P9_18_pinmux { status = "disabled"; };	/* spi0_d1 */
+	P9_22_pinmux { status = "disabled"; };	/* spi0_sclk */
+};
+
 / {
-	/*
-	 * Free up the pins used by the cape from the pinmux helpers.
-	 */
-
-	fragment@1 {
-		target = <&ocp>;
-		__overlay__ {
-			P9_16_pinmux { status = "disabled"; };  /* lcd pwm backlight (OPTIONAL) */
-			P9_19_pinmux { status = "disabled"; };	/* lcd dc */
-			P9_20_pinmux { status = "disabled"; };	/* lcd reset */
-		//	P9_23_pinmux { status = "disabled"; };	/* lcd gpio backlight (OPTIONAL) */
-			P9_17_pinmux { status = "disabled"; };	/* spi0_cs0 */
-			P9_21_pinmux { status = "disabled"; };	/* spi0_d0 */
-			P9_18_pinmux { status = "disabled"; };	/* spi0_d1 */
-			P9_22_pinmux { status = "disabled"; };	/* spi0_sclk */
-		};
-	};
-
 	fragment@2 {
 		target = <&am33xx_pinmux>;
 		__overlay__ {
