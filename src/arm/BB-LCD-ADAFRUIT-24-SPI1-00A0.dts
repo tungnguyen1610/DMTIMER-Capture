@@ -101,16 +101,13 @@
 	status = "okay";
 };
 
-/ {
-	fragment@4 {
-		target = <&ehrpwm1>;
-		__overlay__ {
-			pinctrl-names = "default";
-			pinctrl-0 = <&backlight_pwm_pins>;
-			status = "okay";
-		};
-	};
+&ehrpwm1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&backlight_pwm_pins>;
+	status = "okay";
+};
 
+/ {
 	fragment@5 {
 		target-path = "/";
 		__overlay__ {
