@@ -97,14 +97,11 @@
 	};  /* gpmc_a2.ehrpwm1b */
 };
 
-/ {
-	fragment@3 {
-		target = <&epwmss1>;
-		__overlay__ {
-			status = "okay";
-		};
-	};
+&epwmss1 {
+	status = "okay";
+};
 
+/ {
 	fragment@4 {
 		target = <&ehrpwm1>;
 		__overlay__ {
