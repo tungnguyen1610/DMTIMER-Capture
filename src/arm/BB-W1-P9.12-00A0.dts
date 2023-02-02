@@ -15,8 +15,7 @@
  */
 &{/chosen} {
 	overlays {
-		BB-W1-P9.12-00A0.bb.org-overlays = "may was here";
-		// BB-W1-P9.12-00A0.bb.org-overlays = __TIMESTAMP__;
+		BB-W1-P9.12-00A0.bb.org-overlays = __TIMESTAMP__;
 	};
 };
 
