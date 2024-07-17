@@ -10,7 +10,7 @@
 using namespace std;
 // Base address and offset for TIMER4 registers
 #define TIMER6_BASE 0x48048000
-#define TCRR_OFFSET 0x30
+#define TCRR_OFFSET 0x3C
 #define TCLR_OFFSET 0x38
 #define CM_PER  0x44E00000
 #define TCAR1 0x50
